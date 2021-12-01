@@ -22,6 +22,7 @@ var bodyparser = require("body-parser");
 var projectManager = tm.ProjectManager;
 var testUtil = tu.TestUtil;
 
+var templatePackage = testUtil.templatePackage;
 var templatePath = testUtil.templatePath;
 var thisPluginPath = testUtil.readPluginPath();
 var testRunDirectory = testUtil.readTestRunDirectory();
@@ -96,7 +97,7 @@ function setupTests(): void {
 }
 
 function createTestProject(directory: string): Q.Promise<string> {
-    return projectManager.setupProject(directory, templatePath, TestAppName, TestNamespace)
+    return projectManager.setupProject(directory, templatePackage, TestAppName, TestNamespace)
     .then(() => {
         var promises: Q.Promise<string>[] = [];
         

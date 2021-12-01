@@ -59,24 +59,19 @@ function spawnCommand(command, args, callback, silent, detached) {
 };
 
 function execCommand(command, args, callback, silent) {
-    var process = child_process.exec(command + " " + args.join(" "));
-
-    process.stdout.on('data', function (data) {
-        if (!silent) console.log("" + data);
-    });
-
-    process.stderr.on('data', function (data) {
-        if (!silent) console.error("" + data);
-    });
-
-    process.on('error', function (error) {
-        callback && callback(error);
-    })
-
-    process.on('exit', function (code) {
-        callback && callback(code === 0 ? undefined : "Error code: " + code);
-    });
-
+    var process = child_process.exec(command + " " + args.join(" "),
+			(error, stdout, stderr) => {
+		  if (error) {
+		    console.error(`exec error: ${error}`);
+		    callback && callback(error);
+				return;
+		  }
+			if (!silent) {
+		  	console.log(`stdout: ${stdout}`);
+		  	console.error(`stderr: ${stderr}`);
+			}
+			callback && callback();
+		});
     return process;
 };
 

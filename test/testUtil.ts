@@ -24,6 +24,7 @@ export class TestUtil {
     public static PULL_FROM_NPM: string = "--npm";
     public static SETUP: string = "--setup";
     
+    public static templatePackage = path.join(__dirname, "../../test");
     public static templatePath = path.join(__dirname, "../../test/template");
     
     public static thisPluginPath = path.join(__dirname, "../..");

@@ -1,0 +1,12 @@
+{
+  "name": "cordova-plugin-code-push-test-template",
+  "version": "0.0.1",
+  "description": "This is the test template used by the `cordova create` command.",
+  "main": "index.js",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova:template"
+  ],
+  "author": "byronigoe",
+  "license": "Apache-2.0"
+}
